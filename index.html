@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Be My Valentine 💕</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, #ffd6e8, #ffeef5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+    }
+
+    /* Floating hearts */
+    .heart {
+      position: absolute;
+      bottom: -20px;
+      font-size: 20px;
+      animation: float 6s infinite ease-in;
+      opacity: 0.6;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 0.6;
+      }
+      100% {
+        transform: translateY(-110vh) scale(1.4);
+        opacity: 0;
+      }
+    }
+
+    .card {
+      background: white;
+      padding: 40px;
+      border-radius: 22px;
+      text-align: center;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.12);
+      width: 360px;
+      z-index: 2;
+    }
+
+    h1 {
+      color: #ff4d88;
+      font-size: 26px;
+      margin-bottom: 15px;
+    }
+
+    p {
+      color: #666;
+      margin-bottom: 30px;
+    }
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 20px;
+  position: relative;
+}
+
+    .yes {
+      text-decoration: none;
+      padding: 12px 26px;
+      border-radius: 30px;
+      background: #ff4d88;
+      color: white;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .yes:hover {
+      transform: scale(1.1);
+      background: #ff2f73;
+    }
+
+.no {
+  background: #f1f1f1;
+  color: #777;
+  border: none;
+  padding: 12px 22px;
+  border-radius: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.25s;
+  position: relative;
+}
+  </style>
+</head>
+<body>
+
+  <!-- Hearts -->
+  <span class="heart" style="left:10%; animation-delay:0s;">💗</span>
+  <span class="heart" style="left:30%; animation-delay:2s;">💖</span>
+  <span class="heart" style="left:50%; animation-delay:1s;">💕</span>
+  <span class="heart" style="left:70%; animation-delay:3s;">💘</span>
+  <span class="heart" style="left:90%; animation-delay:4s;">💞</span>
+
+  <div class="card">
+    <h1>Sneha will you be my Valentine? 💘</h1>
+    <p> You are stuck with me anyways.. YOU CANT SAY NO!! </p>
+    <div class="buttons">
+      <a href="yes.html" class="yes">YES 💕</a>
+      <button class="no" id="noBtn">NO 🙃</button>
+    </div>
+  </div>
+
+  <script>
+    const noBtn = document.getElementById("noBtn");
+    let attempts = 0;
+
+    noBtn.addEventListener("mouseenter", moveButton);
+    noBtn.addEventListener("click", handleClick);
+
+function moveButton() {
+  if (attempts >= 3) return;
+  attempts++;
+
+  const btnWidth = noBtn.offsetWidth;
+  const btnHeight = noBtn.offsetHeight;
+
+  const padding = 20;
+
+  const maxX = window.innerWidth - btnWidth - padding;
+  const maxY = window.innerHeight - btnHeight - padding;
+
+  const x = Math.random() * maxX;
+  const y = Math.random() * maxY;
+
+  noBtn.style.position = "fixed";
+  noBtn.style.left = x + "px";
+  noBtn.style.top = y + "px";
+
+  if (attempts === 3) {
+    noBtn.textContent = "I knew it baby";
+    noBtn.style.background = "#ffb6cf";
+    noBtn.style.color = "#fff";
+  }
+}
+
+    function handleClick() {
+      if (attempts >= 3) {
+        window.location.href = "yes.html";
+      }
+    }
+  </script>
+
+</body>
+</html>
